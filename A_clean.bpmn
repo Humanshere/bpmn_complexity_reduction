@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Defs" targetNamespace="http://example.org/bpmn">
+  <process id="P" name="A clean order process" isExecutable="false">
+    <startEvent id="s" name="Order received" />
+    <task id="reg" name="Register order" />
+    <exclusiveGateway id="x1" name="In stock?" />
+    <task id="pack" name="Pack order" />
+    <task id="sup" name="Order from supplier" />
+    <exclusiveGateway id="x2" />
+    <task id="ship" name="Ship order" />
+    <endEvent id="e" name="Order shipped" />
+    <sequenceFlow id="f0" sourceRef="s" targetRef="reg" />
+    <sequenceFlow id="f1" sourceRef="reg" targetRef="x1" />
+    <sequenceFlow id="f2" sourceRef="x1" targetRef="pack" />
+    <sequenceFlow id="f3" sourceRef="x1" targetRef="sup" />
+    <sequenceFlow id="f4" sourceRef="pack" targetRef="x2" />
+    <sequenceFlow id="f5" sourceRef="sup" targetRef="x2" />
+    <sequenceFlow id="f6" sourceRef="x2" targetRef="ship" />
+    <sequenceFlow id="f7" sourceRef="ship" targetRef="e" />
+  </process>
+</definitions>

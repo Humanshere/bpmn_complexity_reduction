@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Defs" targetNamespace="http://example.org/bpmn">
+  <process id="P" name="C parallel loop" isExecutable="false">
+    <startEvent id="s" />
+    <exclusiveGateway id="xj" />
+    <task id="rec" name="Receive claim" />
+    <parallelGateway id="as" />
+    <task id="c1" name="Check policy" />
+    <task id="c2" name="Check history" />
+    <parallelGateway id="aj" />
+    <task id="rev" name="Review claim" />
+    <exclusiveGateway id="xs" />
+    <task id="pay" name="Pay claim" />
+    <endEvent id="e" />
+    <sequenceFlow id="f0" sourceRef="s" targetRef="xj" />
+    <sequenceFlow id="f1" sourceRef="xj" targetRef="rec" />
+    <sequenceFlow id="f2" sourceRef="rec" targetRef="as" />
+    <sequenceFlow id="f3" sourceRef="as" targetRef="c1" />
+    <sequenceFlow id="f4" sourceRef="as" targetRef="c2" />
+    <sequenceFlow id="f5" sourceRef="c1" targetRef="aj" />
+    <sequenceFlow id="f6" sourceRef="c2" targetRef="aj" />
+    <sequenceFlow id="f7" sourceRef="aj" targetRef="rev" />
+    <sequenceFlow id="f8" sourceRef="rev" targetRef="xs" />
+    <sequenceFlow id="f9" sourceRef="xs" targetRef="pay" />
+    <sequenceFlow id="f10" sourceRef="xs" targetRef="xj" />
+    <sequenceFlow id="f11" sourceRef="pay" targetRef="e" />
+  </process>
+</definitions>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Defs" targetNamespace="http://example.org/bpmn">
+  <process id="P" name="D wide decision" isExecutable="false">
+    <startEvent id="s" />
+    <task id="ch" name="Claim handling" />
+    <exclusiveGateway id="x1" />
+    <task id="t1" name="Approve claim" />
+    <task id="t2" name="Reject claim" />
+    <task id="t3" name="Document" />
+    <task id="t4" name="Escalate claim" />
+    <task id="t5" name="Pay claim" />
+    <exclusiveGateway id="x2" />
+    <task id="n" name="Notify customer" />
+    <endEvent id="e1" />
+    <endEvent id="e2" />
+    <sequenceFlow id="f0" sourceRef="s" targetRef="ch" />
+    <sequenceFlow id="f1" sourceRef="ch" targetRef="x1" />
+    <sequenceFlow id="f2" sourceRef="x1" targetRef="t1" />
+    <sequenceFlow id="f3" sourceRef="x1" targetRef="t2" />
+    <sequenceFlow id="f4" sourceRef="x1" targetRef="t3" />
+    <sequenceFlow id="f5" sourceRef="x1" targetRef="t4" />
+    <sequenceFlow id="f6" sourceRef="x1" targetRef="t5" />
+    <sequenceFlow id="f7" sourceRef="t1" targetRef="x2" />
+    <sequenceFlow id="f8" sourceRef="t3" targetRef="x2" />
+    <sequenceFlow id="f9" sourceRef="t4" targetRef="x2" />
+    <sequenceFlow id="f10" sourceRef="t5" targetRef="x2" />
+    <sequenceFlow id="f11" sourceRef="x2" targetRef="n" />
+    <sequenceFlow id="f12" sourceRef="n" targetRef="e1" />
+    <sequenceFlow id="f13" sourceRef="t2" targetRef="e2" />
+  </process>
+</definitions>
